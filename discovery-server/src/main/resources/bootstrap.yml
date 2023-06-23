@@ -1,0 +1,29 @@
+# Este archivo se carga antes del application.yml y nos permite separar configuraciones
+
+# El puerto 8761 es por conveción que se levantan los servidores Eureka
+server:
+  port: ${CUSTOM.SERVER.PORT:8761}
+
+spring:
+  application:
+    name: discovery-server
+
+eureka:
+  # Configuraciones del servidor eureka
+  instance:
+    hostname: localhost     # host para el endpoint del server de eureka
+    prefer-ip-address: true # Los registros de cada cliente registrado mostrarán su IP y no su hostname
+    lease-expiration-duration-in-seconds: 30  # Cada 30 segundas el servidor solicita un "ping" para que el cliente de un status activo
+
+  # Configuraciones del lado del cliente
+  client:
+    # Seteamos estas configuraciones para que el servicio no se registro a si mismo como cliente
+    register-with-eureka: false
+    fetch-registry: false
+    # Indicamos cual es el endpoint para aquel servicio que se quiera registrar como cliente en el eureka server
+    service-url:
+      defaultZona: http://${eureka.instance.hostname}:${server.port}/eureka
+
+  # Nombre para el datacenter y ambiente en la pagina web del administrador de eureka
+  datacenter: ${CUSTOM.SERVER.DATACENTER:lsandoval}
+  environment: ${CUSTOM.SERVER.ENVIRONMENT:Development}

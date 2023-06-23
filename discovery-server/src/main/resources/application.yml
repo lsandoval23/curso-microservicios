@@ -1,0 +1,7 @@
+# En este archivo tendremos configuraciones generales
+
+# Generamos configuraciones propias
+application:
+  title: @project.name@
+  version: @project.version@
+  author: lsandoval
