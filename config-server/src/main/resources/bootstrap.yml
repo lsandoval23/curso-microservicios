@@ -12,10 +12,11 @@ spring:
           # URL del repositorio git que usará el config server para buscar los archivos de propiedades
           uri: https://github.com/lsandoval23/config-server-files.git
           force-pull: false
-          clone-on-start: true
-          default-label: main
-          refresh-rate: 5
-
+          clone-on-start: true # Se hará un clone al iniciar el servicio
+          default-label: main # Rama por defecto que se descargara localmente para obtener los archivos y buscará la rama main
+          refresh-rate: 30     # Cada 30 s hará un pull para buscar cambios en el repositorio remoto
+        encrypt:
+          enabled: false  # true para habilitar el desencriptado automatico
 eureka:
   # Configuraciones del lado del cliente, en este caso si queremos que se registre al servidor eureka
   client:
@@ -25,3 +26,6 @@ eureka:
     service-url:
       defaultZona: http://localhost:8761/eureka
 
+# Llave de encriptación, se tiene el endpoint /encrypt con el metodo POST para encriptar lo que se le pasa en el body.
+encrypt:
+  key: lsandoval
