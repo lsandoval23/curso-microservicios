@@ -1,0 +1,27 @@
+server:
+  port: ${CUSTOM.SERVER.PORT:9000}
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    # Configuraciones para el config-server
+    config:
+      server:
+        git:
+          # URL del repositorio git que usará el config server para buscar los archivos de propiedades
+          uri: https://github.com/lsandoval23/config-server-files.git
+          force-pull: false
+          clone-on-start: true
+          default-label: main
+          refresh-rate: 5
+
+eureka:
+  # Configuraciones del lado del cliente, en este caso si queremos que se registre al servidor eureka
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    # Indicamos cual es el endpoint para aquel servicio que se quiera registrar como cliente en el eureka server
+    service-url:
+      defaultZona: http://localhost:8761/eureka
+
