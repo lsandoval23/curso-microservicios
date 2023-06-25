@@ -27,7 +27,7 @@ eureka:
     fetch-registry: true
     # Indicamos cual es el endpoint para aquel servicio que se quiera registrar como cliente en el eureka server
     service-url:
-      defaultZona: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/eureka
 
 # Llave de encriptación, se tiene el endpoint /encrypt con el metodo POST para encriptar lo que se le pasa en el body.
 encrypt:

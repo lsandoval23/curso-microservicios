@@ -1,0 +1,10 @@
+# Configuraciones para un cliente de config server
+
+spring:
+  application:
+    name: user-service
+  cloud:
+    config:
+      uri: http://localhost:9000  # URL del config server
+      profile: desa               # Perfil del archivo de propiedades
+      enabled: true

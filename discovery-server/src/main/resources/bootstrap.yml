@@ -22,7 +22,7 @@ eureka:
     fetch-registry: false
     # Indicamos cual es el endpoint para aquel servicio que se quiera registrar como cliente en el eureka server
     service-url:
-      defaultZona: http://${eureka.instance.hostname}:${server.port}/eureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 
   # Nombre para el datacenter y ambiente en la pagina web del administrador de eureka
   datacenter: ${CUSTOM.SERVER.DATACENTER:lsandoval}
