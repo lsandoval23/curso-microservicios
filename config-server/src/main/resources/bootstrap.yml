@@ -17,7 +17,7 @@ spring:
           force-pull: false
           clone-on-start: true # Se hará un clone al iniciar el servicio
           default-label: main # Rama por defecto que se descargara localmente para obtener los archivos y buscará la rama main
-          refresh-rate: 30     # Cada 30 s hará un pull para buscar cambios en el repositorio remoto
+          refresh-rate: 5     # Cada 30 s hará un pull para buscar cambios en el repositorio remoto
         encrypt:
           enabled: false  # true para habilitar el desencriptado automatico
 eureka:
