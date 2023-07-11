@@ -8,14 +8,26 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Slf4j
-//@Component
+@Component
 public class CustomFilter extends AbstractGatewayFilterFactory<CustomFilter.CustomConfiguration> {
 
     public CustomFilter(){
         super(CustomConfiguration.class);
     }
 
+    @Override
+    public String name() {
+        return "CustomFilterMitocode";
+    }
+
+    @Override
+    public List<String> shortcutFieldOrder() {
+        return Arrays.asList("headerKey", "headerValue");
+    }
 
     @Override
     public GatewayFilter apply(CustomConfiguration config) {
