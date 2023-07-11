@@ -18,8 +18,10 @@ public interface UserRepository extends CrudRepository<UserEntity, String>, Pagi
     @RestResource(path = "email")
     List<UserEntity> getAllByEmail(String email);
 
+    // Nota: El parametro que le pasamos al metodo influye en el path (http://{ip}:9004/user/search/role?role=ROLE_USER)
+    // Antes de hacer el cambio, el path no devolvía ningun resultado a pesar de tener registros con ese rol
     @RestResource(path = "role")
-    List<UserEntity> getAllByRoles(String roles);
+    List<UserEntity> getAllByRoles(String role);
 
     // De esta manera bloqueamos el endpoint para poder eliminar elementos.
     @RestResource(exported = false)

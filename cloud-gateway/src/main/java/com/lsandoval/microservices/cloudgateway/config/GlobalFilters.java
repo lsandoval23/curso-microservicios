@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono;
 
 // Implementamos un filtro global que afectara a todas las solicitudes que vayan a Cloud Gateway
 @Slf4j
-@Component
+//@Component
 public class GlobalFilters implements GlobalFilter {
 
 
