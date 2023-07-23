@@ -1,14 +1,12 @@
-package com.lsandoval.microservices.productservice.model.dto;
+package com.lsandoval.microservices.clientservice.model.request;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.extern.jackson.Jacksonized;
 
 @Data
 @Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Jacksonized
 public class ProductDTO {
 
     private String productId;
