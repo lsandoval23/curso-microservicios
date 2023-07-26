@@ -1,4 +1,4 @@
-package com.lsandoval.microservices.clientservice.proxy;
+package com.lsandoval.microservices.clientservice.proxy.resttemplate;
 
 import com.lsandoval.microservices.clientservice.model.request.ProductDTO;
 import lombok.RequiredArgsConstructor;
@@ -10,13 +10,12 @@ import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor
-public class ProductRestTemplate {
+public class CloudGatewayRestTemplate {
 
     private final RestTemplate restTemplate;
 
     public List<ProductDTO> getAllProducts(){
         return List.of(Objects
-                .requireNonNull(restTemplate.getForObject("http://localhost:9001/product", ProductDTO[].class)));
+                .requireNonNull(restTemplate.getForObject("http://localhost:9080/api/product-service/product", ProductDTO[].class)));
     }
-
 }
