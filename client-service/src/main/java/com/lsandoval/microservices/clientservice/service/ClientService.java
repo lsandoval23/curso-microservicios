@@ -1,6 +1,7 @@
 package com.lsandoval.microservices.clientservice.service;
 
 import com.lsandoval.microservices.clientservice.model.request.ProductDTO;
+import com.lsandoval.microservices.clientservice.proxy.CloudGatewayRestTemplate;
 import com.lsandoval.microservices.clientservice.proxy.ProductRestTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,9 +13,10 @@ import java.util.List;
 public class ClientService {
 
     private final ProductRestTemplate productRestTemplate;
+    private final CloudGatewayRestTemplate cloudGatewayRestTemplate;
 
     public List<ProductDTO> getAllProducts(){
-        return productRestTemplate.getAllProducts();
+        return cloudGatewayRestTemplate.getAllProducts();
     }
 
 
