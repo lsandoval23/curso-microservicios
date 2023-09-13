@@ -39,8 +39,17 @@ public class ClientService {
                       e ->  getAlternativeProducts(e) );
     }
 
-    public ProductDTO saveProduct(ProductDTO productDTO){
+    /*public ProductDTO saveProduct(ProductDTO productDTO){
         return cloudGatewayFeign.saveProduct(productDTO);
+    }*/
+
+    // El identificador "mitocode2" define al circuito, es decir si se usa el mismo identificado en varios metodos y uno pasa a estado abierto. Este estado
+    // afecta a los demás. (Se crea un hilo distinto para cada identificador)
+    public ProductDTO saveProduct(ProductDTO productDTO){
+        return circuitBreakerFactory.create("mitocode2")
+                .run(() -> cloudGatewayFeign.saveProduct(productDTO),
+                        e -> getAlternativeSaveProduct(productDTO, e)); // El metodo alternativo recibe los mismos parametro que el metodo original,
+                                                                        // ademas del throwable
     }
 
     private List<ProductDTO> getAlternativeProducts(Throwable e){
@@ -57,6 +66,20 @@ public class ClientService {
         lstProducts.add(productDTO);
 
         return  lstProducts;
+    }
+
+    private ProductDTO getAlternativeSaveProduct(ProductDTO productDTO, Throwable e) {
+        log.info(e.getMessage());
+
+        ProductDTO newProductDTO = ProductDTO.builder()
+                .productId("P9999")
+                .productName("Product Fake")
+                .productType("Fake")
+                .stock(5)
+                .build();
+
+        return  newProductDTO;
+
     }
 
 
