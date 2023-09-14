@@ -18,7 +18,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/product")
-    public ResponseEntity<List<ProductDTO>> getAllProducts(){
+    public ResponseEntity<List<ProductDTO>> getAllProducts() throws InterruptedException {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 

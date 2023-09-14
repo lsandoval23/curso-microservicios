@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -21,7 +22,9 @@ public class ProductService {
     @Value("${server.port}")
     private Integer port;
 
-    public List<ProductDTO> getAllProducts(){
+    public List<ProductDTO> getAllProducts() throws InterruptedException {
+
+        TimeUnit.MILLISECONDS.sleep(1400L);
 
         Iterable<ProductEntity> itProducts = productRepository.findAll();
         return StreamSupport.stream(itProducts.spliterator(), false).map( productEntity -> {
