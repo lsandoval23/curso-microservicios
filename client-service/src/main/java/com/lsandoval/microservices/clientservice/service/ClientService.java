@@ -91,43 +91,43 @@ public class ClientService {
 
     /* ===== Circuit Breaker: Usando Metodos Declarativos (archivo de propiedades) ===== */
 
-    @CircuitBreaker(name = "product-cb", fallbackMethod = "getAlternativeProducts")
+    //@CircuitBreaker(name = "product-cb", fallbackMethod = "getAlternativeProducts")
     public List<ProductDTO> getAllProducts() {
         return cloudGatewayFeign.getAllProducts();
     }
 
-    private List<ProductDTO> getAlternativeProducts(Throwable e){
-        log.info(e.getMessage());
-        List<ProductDTO> lstProducts = new ArrayList<>();
-        ProductDTO productDTO = ProductDTO.builder()
-                .productId("P9999")
-                .productName("Product Fake")
-                .productType("Fake")
-                .stock(5)
-                .build();
+//    private List<ProductDTO> getAlternativeProducts(Throwable e){
+//        log.info(e.getMessage());
+//        List<ProductDTO> lstProducts = new ArrayList<>();
+//        ProductDTO productDTO = ProductDTO.builder()
+//                .productId("P9999")
+//                .productName("Product Fake")
+//                .productType("Fake")
+//                .stock(5)
+//                .build();
+//
+//        lstProducts.add(productDTO);
+//
+//        return  lstProducts;
+//    }
 
-        lstProducts.add(productDTO);
-
-        return  lstProducts;
-    }
-
-    @CircuitBreaker(name = "product-cb", fallbackMethod = "getAlternativeSaveProduct")
+    //@CircuitBreaker(name = "product-cb", fallbackMethod = "getAlternativeSaveProduct")
     public ProductDTO saveProduct(ProductDTO productDTO) {
         return cloudGatewayFeign.saveProduct(productDTO);
     }
 
-        private ProductDTO getAlternativeSaveProduct(ProductDTO productDTO, Throwable e) {
-        log.info(e.getMessage());
-
-        ProductDTO newProductDTO = ProductDTO.builder()
-                .productId("P8888")
-                .productName("Product Fake")
-                .productType("Fake")
-                .stock(5)
-                .build();
-
-        return  newProductDTO;
-
-    }
+//    private ProductDTO getAlternativeSaveProduct(ProductDTO productDTO, Throwable e) {
+//        log.info(e.getMessage());
+//
+//        ProductDTO newProductDTO = ProductDTO.builder()
+//                .productId("P8888")
+//                .productName("Product Fake")
+//                .productType("Fake")
+//                .stock(5)
+//                .build();
+//
+//        return  newProductDTO;
+//
+//    }
 
 }
