@@ -12,6 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/authenticate").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and().oauth2Login();   // añadimos un login por medio de un proveedor de login oauth2
     }
 }
