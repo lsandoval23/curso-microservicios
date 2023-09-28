@@ -13,7 +13,7 @@ spring:
           uri: https://github.com/lsandoval23/config-server-files.git
           # Credenciales en caso el repositorio sea privado
           username: 'lsandoval23'
-          password: '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'
+          password: '{cipher}0a36682d54ceec902ccc78c97b2cb077f3af4ba8ab45a4acd3397a6917bdef72a984620a2b30e3bc5c96f04c6a140611a5c597008aa386ea73883ff7e7ad1136'
           force-pull: false
           clone-on-start: true # Se hará un clone al iniciar el servicio
           default-label: main # Rama por defecto que se descargara localmente para obtener los archivos y buscará la rama main
